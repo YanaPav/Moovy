@@ -19,8 +19,6 @@ export const SearchResultsList = () => {
     { skip: !title }
   );
 
-  console.log(data);
-
   const pageClickHandle = e => {
     let scroll = Scroll.animateScroll;
     scroll.scrollToTop();

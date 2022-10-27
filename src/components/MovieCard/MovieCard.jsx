@@ -4,28 +4,38 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import noPoster from '../../noPoster.jpg';
 import {
   addRatedMovie,
   removeRatedMovie,
 } from '../../redux/slices/ratedMoviesSlice';
+import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
 
 export const MovieCard = ({ poster, title, year, id }) => {
+  const [imdbID, seImdbID] = useState(null);
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
+  const { data } = useGetMovieByIdQuery(imdbID, { skip: !imdbID });
 
-  const changeRatingHandle = (event, newValue) => {
-    console.log(newValue);
-    setRating(newValue);
-    if (newValue !== null) {
-      dispatch(addRatedMovie({ poster, title, year, id, rating: newValue }));
+  useEffect(() => {
+    if (!data) return;
+    console.log(data);
+    console.log(rating);
+
+    if (rating !== null) {
+      dispatch(addRatedMovie({ ...data, rating }));
       return;
     }
-    if (newValue === null) {
-      dispatch(removeRatedMovie(id));
+    if (rating === null) {
+      dispatch(removeRatedMovie(data.imdbID));
     }
+  }, [data, dispatch, rating]);
+
+  const changeRatingHandle = (event, newValue) => {
+    seImdbID(id);
+    setRating(newValue);
   };
 
   return (

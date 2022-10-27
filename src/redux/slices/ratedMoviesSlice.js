@@ -6,7 +6,7 @@ const ratedMoviesSlice = createSlice({
   reducers: {
     addRatedMovie(state, { payload }) {
           const isInState = state.find(movie => movie.id === payload.id)
-          
+
           if (isInState) {  
               return state.map(movie => {
                   if (movie.id === payload.id) {
@@ -18,7 +18,7 @@ const ratedMoviesSlice = createSlice({
     return [...state, payload]
     },
     removeRatedMovie(state, { payload }) {
-      return state.filter(movie => movie.id !== payload)
+      return state.filter(movie => movie.imdbID !== payload)
       },
     }
      
