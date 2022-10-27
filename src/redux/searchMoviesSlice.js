@@ -7,7 +7,7 @@ export const searchMoviesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `http://www.omdbapi.com/` }),
   endpoints: (builder) => ({
     getMoviesByTitle: builder.query({
-        query: ({ title, page }) => `?apikey=${API_KEY}&s=${title}&page=${page}`,
+        query: ({ title, page }) => `?type=movie&apikey=${API_KEY}&s=${title}&page=${page}`,
         providesTags: (id) => [{ type: 'moviesByTitle', id }]
     }),
   }),

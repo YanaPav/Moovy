@@ -32,8 +32,10 @@ export const SearchResultsList = ({ title }) => {
       {data?.totalResults > 10 && (
         <Stack spacing={2}>
           <Pagination
+            hidePrevButton
+            hideNextButton
             count={Math.ceil(data.totalResults / 10)}
-            onChange={() => console.log(page)}
+            onClick={e => setPage(e.target.textContent)}
           />
         </Stack>
       )}
