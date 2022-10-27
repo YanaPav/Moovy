@@ -1,19 +1,31 @@
-import { useGetMoviesByTitleQuery } from '../../redux/searchMoviesSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import LinearProgress from '@mui/material/LinearProgress';
-import { useState } from 'react';
-
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useGetMoviesByTitleQuery } from '../../redux/searchMoviesSlice';
+import { MovieCard } from '../MovieCard/MovieCard';
+import { setPage } from '../../redux/filterValuesSlice';
+import * as Scroll from 'react-scroll';
 
-export const SearchResultsList = ({ title }) => {
-  const [page, setPage] = useState(1);
+export const SearchResultsList = () => {
+  const dispatch = useDispatch();
+  const { title, releaseYear, page } = useSelector(state => state.filterValues);
   const { data, isLoading } = useGetMoviesByTitleQuery(
     {
       title,
+      releaseYear,
       page,
     },
     { skip: !title }
   );
+
+  console.log(data);
+
+  const pageClickHandle = e => {
+    let scroll = Scroll.animateScroll;
+    scroll.scrollToTop();
+    dispatch(setPage(e.target.textContent));
+  };
 
   return (
     <>
@@ -21,11 +33,14 @@ export const SearchResultsList = ({ title }) => {
       {data?.Error && <p>{data.Error}</p>}
       {data && (
         <ul>
-          {data.Search?.map(({ Poster, Title, imdbID }) => (
-            <li key={imdbID}>
-              <img src={Poster} alt={Title} />
-              {Title}
-            </li>
+          {data.Search.map(({ Poster, Title, imdbID, Year }) => (
+            <MovieCard
+              key={imdbID}
+              poster={Poster}
+              title={Title}
+              id={imdbID}
+              year={Year}
+            />
           ))}
         </ul>
       )}
@@ -35,7 +50,7 @@ export const SearchResultsList = ({ title }) => {
             hidePrevButton
             hideNextButton
             count={Math.ceil(data.totalResults / 10)}
-            onClick={e => setPage(e.target.textContent)}
+            onClick={pageClickHandle}
           />
         </Stack>
       )}

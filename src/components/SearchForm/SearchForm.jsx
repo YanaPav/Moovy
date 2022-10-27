@@ -2,22 +2,39 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledTextField } from './SearchForm.styled';
+import { useDispatch } from 'react-redux';
+import { setFilters } from '../../redux/filterValuesSlice';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(e.target.elements.searchQwery.value);
+    const form = e.target.elements;
+    dispatch(
+      setFilters({
+        title: form.title.value,
+        releaseYear: form.releaseYear.value,
+      })
+    );
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mt={2}>
         <StyledTextField
           id="outlined-basic"
-          label="Type movie title or title and release year"
+          label="Type movie title"
           variant="outlined"
           size="small"
-          name="searchQwery"
+          name="title"
+        />
+        <StyledTextField
+          id="outlined-basic"
+          label="Type release year"
+          variant="outlined"
+          size="small"
+          name="releaseYear"
         />
         <Button
           type="submit"
