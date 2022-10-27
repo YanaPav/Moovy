@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/Moovy/static/css/main.7acaea2f.css",
-    "main.js": "/Moovy/static/js/main.a38b9beb.js",
+    "main.js": "/Moovy/static/js/main.6e0ca8f4.js",
+    "static/media/noPoster.jpg": "/Moovy/static/media/noPoster.51f65e5bfc2262c3d1bb.jpg",
     "index.html": "/Moovy/index.html",
     "main.7acaea2f.css.map": "/Moovy/static/css/main.7acaea2f.css.map",
-    "main.a38b9beb.js.map": "/Moovy/static/js/main.a38b9beb.js.map"
+    "main.6e0ca8f4.js.map": "/Moovy/static/js/main.6e0ca8f4.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.a38b9beb.js"
+    "static/js/main.6e0ca8f4.js"
   ]
 }
