@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import LinearProgress from '@mui/material/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useGetMoviesByTitleQuery } from '../../redux/searchMoviesSlice';
+import { useGetMoviesByTitleQuery } from '../../redux/slices/searchMoviesSlice';
 import { MovieCard } from '../MovieCard/MovieCard';
-import { setPage } from '../../redux/filterValuesSlice';
+import { setPage } from '../../redux/slices/filterValuesSlice';
 import * as Scroll from 'react-scroll';
 
 export const SearchResultsList = () => {
@@ -33,7 +33,7 @@ export const SearchResultsList = () => {
       {data?.Error && <p>{data.Error}</p>}
       {data && (
         <ul>
-          {data.Search.map(({ Poster, Title, imdbID, Year }) => (
+          {data.Search?.map(({ Poster, Title, imdbID, Year }) => (
             <MovieCard
               key={imdbID}
               poster={Poster}

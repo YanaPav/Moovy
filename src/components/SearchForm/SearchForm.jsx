@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledTextField } from './SearchForm.styled';
 import { useDispatch } from 'react-redux';
-import { setFilters } from '../../redux/filterValuesSlice';
+import { setFilters } from '../../redux/slices/filterValuesSlice';
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
