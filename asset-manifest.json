@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Moovy/static/css/main.7acaea2f.css",
-    "main.js": "/Moovy/static/js/main.07d3183d.js",
+    "main.js": "/Moovy/static/js/main.a38b9beb.js",
     "index.html": "/Moovy/index.html",
     "main.7acaea2f.css.map": "/Moovy/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/Moovy/static/js/main.07d3183d.js.map"
+    "main.a38b9beb.js.map": "/Moovy/static/js/main.a38b9beb.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/js/main.a38b9beb.js"
   ]
 }
