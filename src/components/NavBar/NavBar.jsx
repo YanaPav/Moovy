@@ -21,7 +21,7 @@ export const NavBar = props => {
                 Home
               </StyledNavLink>
               <StyledNavLink to="/rated" end key="rated">
-                Rated movies
+                My movies
               </StyledNavLink>
             </Box>
           </Toolbar>

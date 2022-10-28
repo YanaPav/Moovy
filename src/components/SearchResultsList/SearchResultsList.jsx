@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import LinearProgress from '@mui/material/LinearProgress';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import { LinearProgress, Pagination, Stack, Box } from '@mui/material';
 import { useGetMoviesByTitleQuery } from '../../redux/slices/searchMoviesSlice';
 import { MovieCard } from '../MovieCard/MovieCard';
 import { setPage } from '../../redux/slices/filterValuesSlice';
@@ -30,7 +28,16 @@ export const SearchResultsList = () => {
       {isLoading && <LinearProgress />}
       {data?.Error && <p>{data.Error}</p>}
       {data && (
-        <ul>
+        <Box
+          component="ul"
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            justifyContent: 'center',
+            padding: 0,
+          }}
+        >
           {data.Search?.map(({ Poster, Title, imdbID, Year }) => (
             <MovieCard
               key={imdbID}
@@ -40,7 +47,7 @@ export const SearchResultsList = () => {
               year={Year}
             />
           ))}
-        </ul>
+        </Box>
       )}
       {data?.totalResults > 10 && (
         <Stack spacing={2}>

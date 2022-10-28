@@ -1,9 +1,13 @@
-import Card from '@mui/material/Card';
-import Rating from '@mui/material/Rating';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import {
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  Card,
+  Rating,
+} from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import noPoster from '../../noPoster.jpg';
@@ -18,11 +22,10 @@ export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
   const { data } = useGetMovieByIdQuery(imdbID, { skip: !imdbID });
+  const location = useLocation();
 
   useEffect(() => {
     if (!data) return;
-    console.log(data);
-    console.log(rating);
 
     if (rating !== null) {
       dispatch(addRatedMovie({ ...data, rating }));
@@ -39,23 +42,32 @@ export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        width="240"
-        image={poster === 'N/A' ? noPoster : poster}
-        alt={title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title} ({year})
-        </Typography>
-        {genre && (
+    <Card
+      sx={{
+        maxWidth: 300,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Link to={`/movie/${imdbID ?? id}`} state={{ from: location }}>
+        <CardMedia
+          component="img"
+          image={poster === 'N/A' ? noPoster : poster}
+          alt={title}
+          sx={{ backgroundColor: 'darkgray' }}
+        />
+        <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            Genre: {genre}
+            {title} ({year})
           </Typography>
-        )}
-      </CardContent>
+          {genre && (
+            <Typography gutterBottom variant="h7" component="div">
+              Genre: {genre}
+            </Typography>
+          )}
+        </CardContent>
+      </Link>
       <CardActions>
         <Rating
           name="simple-controlled"

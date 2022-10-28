@@ -3,6 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { SearchPage } from '../Pages/SearchPage/SearchPage';
 import { RatedMoviesPage } from '../Pages/RatedMoviesPage/RatedMoviesPage';
 import { NavBar } from '../components/NavBar/NavBar';
+import { PageNotFound } from './PageNotFound/PageNotFound';
+import { MovieDetailsPage } from '../Pages/MovieDetailsPage/MovieDetailsPage';
 
 export const App = () => {
   return (
@@ -11,6 +13,8 @@ export const App = () => {
         <Route path="/" element={<NavBar />}>
           <Route index element={<SearchPage />} />
           <Route path="rated" element={<RatedMoviesPage />} />
+          <Route path="movie/:movieId" element={<MovieDetailsPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
       <CssBaseline />

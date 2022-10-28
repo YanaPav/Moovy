@@ -1,5 +1,4 @@
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import { Button, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledTextField, StyledForm } from './SearchForm.styled';
 import { useDispatch } from 'react-redux';
@@ -21,7 +20,11 @@ export const SearchForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Stack direction="row" spacing={2}>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ marginLeft: 'auto', marginRight: 'auto' }}
+      >
         <StyledTextField
           id="outlined-basic"
           label="Type movie title"

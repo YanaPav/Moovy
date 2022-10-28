@@ -1,34 +1,64 @@
 import { useSelector } from 'react-redux';
-import Container from '@mui/material/Container';
-import noMoviesPoster from '../../noMoviesPoster.png';
+import { useState } from 'react';
+import { Box, Container } from '@mui/material';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
+import { GenreFilter } from '../../components/GenreFilter/GenreFilter';
+import { NoRatedMovies } from '../../components/NoRatedMovies/NoRatedMovies';
 
 export const RatedMoviesPage = () => {
   const ratedMovies = useSelector(state => state.ratedMovies);
   const isRatedMovies = ratedMovies.length > 0;
+  const [genreFilterValue, setGenreFilterValue] = useState('');
+
+  const handlerFilterChange = e => {
+    setGenreFilterValue(e.currentTarget.value);
+  };
+
+  const filtredMovies = ratedMovies.filter(({ Genre }) =>
+    Genre.toLowerCase().includes(genreFilterValue.toLowerCase())
+  );
+
   return (
-    <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 10 }}>
-      {!isRatedMovies && (
-        <>
-          <p>There are no rated movies yeat :(</p>
-          <img src={noMoviesPoster} alt="popcorn" width="500" />
-        </>
-      )}
+    <Container maxWidth="lg" sx={{ mt: 10 }}>
+      {!isRatedMovies && <NoRatedMovies />}
 
       {isRatedMovies && (
-        <ul>
-          {ratedMovies.map(({ Poster, Title, Year, imdbID, rating, Genre }) => (
-            <MovieCard
-              key={imdbID}
-              poster={Poster}
-              year={Year}
-              title={Title}
-              id={imdbID}
-              startRating={rating}
-              genre={Genre}
-            />
-          ))}
-        </ul>
+        <>
+          <GenreFilter
+            value={genreFilterValue}
+            onChange={handlerFilterChange}
+            sx={{ justifyContent: 'center' }}
+          />
+
+          {filtredMovies.length === 0 && (
+            <p>There are no movies in the "{genreFilterValue}" genre</p>
+          )}
+
+          <Box
+            component="ul"
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '16px',
+              justifyContent: 'center',
+              padding: 0,
+            }}
+          >
+            {filtredMovies.map(
+              ({ Poster, Title, Year, imdbID, rating, Genre }) => (
+                <MovieCard
+                  key={imdbID}
+                  poster={Poster}
+                  year={Year}
+                  title={Title}
+                  id={imdbID}
+                  startRating={rating}
+                  genre={Genre}
+                />
+              )
+            )}
+          </Box>
+        </>
       )}
     </Container>
   );
