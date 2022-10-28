@@ -13,7 +13,7 @@ import {
 } from '../../redux/slices/ratedMoviesSlice';
 import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
 
-export const MovieCard = ({ poster, title, year, id }) => {
+export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
   const [imdbID, seImdbID] = useState(null);
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
@@ -50,11 +50,16 @@ export const MovieCard = ({ poster, title, year, id }) => {
         <Typography gutterBottom variant="h5" component="div">
           {title} ({year})
         </Typography>
+        {genre && (
+          <Typography gutterBottom variant="h6" component="div">
+            Genre: {genre}
+          </Typography>
+        )}
       </CardContent>
       <CardActions>
         <Rating
           name="simple-controlled"
-          value={rating}
+          value={startRating ?? rating}
           onChange={changeRatingHandle}
         />
       </CardActions>

@@ -1,12 +1,12 @@
-import { Box } from '@mui/system';
 import { SearchResultsList } from '../../components/SearchResultsList/SearchResultsList';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
+import Container from '@mui/material/Container';
 
 export const SearchPage = () => {
   return (
-    <Box sx={{ py: 0 }}>
+    <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 10 }}>
       <SearchForm />
       <SearchResultsList />
-    </Box>
+    </Container>
   );
 };

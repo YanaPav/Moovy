@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import SearchIcon from '@mui/icons-material/Search';
-import { StyledTextField } from './SearchForm.styled';
+import { StyledTextField, StyledForm } from './SearchForm.styled';
 import { useDispatch } from 'react-redux';
 import { setFilters } from '../../redux/slices/filterValuesSlice';
 
@@ -20,8 +20,8 @@ export const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack direction="row" spacing={2} mt={2}>
+    <StyledForm onSubmit={handleSubmit}>
+      <Stack direction="row" spacing={2}>
         <StyledTextField
           id="outlined-basic"
           label="Type movie title"
@@ -45,6 +45,6 @@ export const SearchForm = () => {
           Search
         </Button>
       </Stack>
-    </form>
+    </StyledForm>
   );
 };
