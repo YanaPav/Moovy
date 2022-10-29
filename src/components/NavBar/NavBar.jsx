@@ -1,9 +1,8 @@
 import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
-
 import { Outlet } from 'react-router-dom';
-import { StyledNavLink } from './NavBar.styled';
+import { StyledNavLink, StyledFooter } from './NavBar.styled';
 
-export const NavBar = props => {
+export const NavBar = () => {
   return (
     <>
       <AppBar component="nav">

@@ -8,7 +8,7 @@ import * as Scroll from 'react-scroll';
 export const SearchResultsList = () => {
   const dispatch = useDispatch();
   const { title, releaseYear, page } = useSelector(state => state.filterValues);
-  const { data, isLoading } = useGetMoviesByTitleQuery(
+  const { data, error, isLoading } = useGetMoviesByTitleQuery(
     {
       title,
       releaseYear,
@@ -25,9 +25,14 @@ export const SearchResultsList = () => {
 
   return (
     <>
-      {isLoading && <LinearProgress />}
+      {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}
+
+      {error && <p>Something goes wrong :( Try again later.</p>}
+      {/* Real error {error.data.Error} */}
+
       {data?.Error && <p>{data.Error}</p>}
-      {data && (
+
+      {data && !data?.Error && (
         <Box
           component="ul"
           sx={{
@@ -49,6 +54,7 @@ export const SearchResultsList = () => {
           ))}
         </Box>
       )}
+
       {data?.totalResults > 10 && (
         <Stack spacing={2}>
           <Pagination
@@ -56,6 +62,7 @@ export const SearchResultsList = () => {
             hideNextButton
             count={Math.ceil(data.totalResults / 10)}
             onClick={pageClickHandle}
+            sx={{ marginLeft: 'auto', marginRight: 'auto', padding: '16px 0' }}
           />
         </Stack>
       )}

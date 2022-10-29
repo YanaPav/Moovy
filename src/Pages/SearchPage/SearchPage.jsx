@@ -4,9 +4,11 @@ import Container from '@mui/material/Container';
 
 export const SearchPage = () => {
   return (
-    <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 10 }}>
-      <SearchForm />
-      <SearchResultsList />
-    </Container>
+    <>
+      <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 10 }}>
+        <SearchForm />
+        <SearchResultsList />
+      </Container>
+    </>
   );
 };

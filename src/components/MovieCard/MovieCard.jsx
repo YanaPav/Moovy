@@ -7,7 +7,7 @@ import {
   Rating,
 } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import noPoster from '../../noPoster.jpg';
@@ -62,6 +62,7 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        textAlign: 'left',
       }}
     >
       <Link to={`/movie/${imdbID ?? id}`} state={{ from: location }}>
@@ -71,8 +72,8 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
           alt={title}
           sx={{ backgroundColor: 'darkgray' }}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+        <CardContent sx={{ color: 'black' }}>
+          <Typography gutterBottom variant="h6" component="h2">
             {title} ({year})
           </Typography>
           {genre && (
@@ -82,7 +83,7 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
           )}
         </CardContent>
       </Link>
-      <CardActions>
+      <CardActions sx={{ alignSelf: 'end' }}>
         <Rating
           name="simple-controlled"
           value={isAlredyRated() ?? rating}
@@ -91,4 +92,12 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
       </CardActions>
     </Card>
   );
+};
+
+MovieCard.propTypes = {
+  poster: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  genre: PropTypes.string,
 };

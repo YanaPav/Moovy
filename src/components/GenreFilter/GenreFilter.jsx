@@ -1,10 +1,11 @@
 import { StyledTextField } from '../SearchForm/SearchForm.styled';
+import PropTypes from 'prop-types';
 
 export const GenreFilter = ({ value, onChange }) => {
   return (
     <StyledTextField
       id="outlined-basic"
-      label="Find movies by genree"
+      label="Find movies by genre"
       name="filter"
       variant="outlined"
       size="small"
@@ -12,4 +13,9 @@ export const GenreFilter = ({ value, onChange }) => {
       onChange={onChange}
     />
   );
+};
+
+GenreFilter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 };

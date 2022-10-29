@@ -19,7 +19,7 @@ export const RatedMoviesPage = () => {
   );
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 10 }}>
+    <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
       {!isRatedMovies && <NoRatedMovies />}
 
       {isRatedMovies && (
@@ -27,7 +27,6 @@ export const RatedMoviesPage = () => {
           <GenreFilter
             value={genreFilterValue}
             onChange={handlerFilterChange}
-            sx={{ justifyContent: 'center' }}
           />
 
           {filtredMovies.length === 0 && (

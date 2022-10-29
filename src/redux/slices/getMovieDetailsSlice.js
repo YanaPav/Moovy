@@ -7,7 +7,7 @@ export const getMovieDetailsApi  = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `https://www.omdbapi.com/` }),
   endpoints: (builder) => ({
     getMovieById: builder.query({
-      query: (imdbID) => `?apikey=${API_KEY}&i=${imdbID}`,
+      query: (imdbID) => `?apikey=${API_KEY}&i=${imdbID}&plot=full`,
       providesTags: (id) => [{ type: 'movieDetails', id }]
     }),
   }),

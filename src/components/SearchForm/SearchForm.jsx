@@ -9,11 +9,12 @@ export const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const form = e.target.elements;
     dispatch(
       setFilters({
-        title: form.title.value,
-        releaseYear: form.releaseYear.value,
+        title: form.title.value.trim(),
+        releaseYear: form.releaseYear.value.trim(),
       })
     );
   };
@@ -31,6 +32,7 @@ export const SearchForm = () => {
           variant="outlined"
           size="small"
           name="title"
+          required
         />
         <StyledTextField
           id="outlined-basic"
@@ -38,6 +40,10 @@ export const SearchForm = () => {
           variant="outlined"
           size="small"
           name="releaseYear"
+          inputProps={{
+            pattern: '[0-9]{4}',
+            title: 'YYYY',
+          }}
         />
         <Button
           type="submit"

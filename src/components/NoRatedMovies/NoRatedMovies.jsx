@@ -9,7 +9,7 @@ export const NoRatedMovies = () => {
         textAlign: 'center',
       }}
     >
-      <p>You have no rated movies yeat :(</p>
+      <p>You have no rated movies yet :(</p>
       <img src={noMoviesPoster} alt="popcorn" width="500" />
     </Container>
   );
