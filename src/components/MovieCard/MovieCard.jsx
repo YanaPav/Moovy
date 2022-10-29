@@ -9,7 +9,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import noPoster from '../../noPoster.jpg';
 import {
   addRatedMovie,
@@ -17,12 +17,13 @@ import {
 } from '../../redux/slices/ratedMoviesSlice';
 import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
 
-export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
+export const MovieCard = ({ poster, title, year, id, genre }) => {
   const [imdbID, seImdbID] = useState(null);
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
   const { data } = useGetMovieByIdQuery(imdbID, { skip: !imdbID });
   const location = useLocation();
+  const ratedMovies = useSelector(state => state.ratedMovies);
 
   useEffect(() => {
     if (!data) return;
@@ -35,6 +36,19 @@ export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
       dispatch(removeRatedMovie(data.imdbID));
     }
   }, [data, dispatch, rating]);
+
+  function isAlredyRated() {
+    let startRating = null;
+    const movieId = imdbID || id;
+    const alredyRatedMovie = ratedMovies.find(
+      movie => movie.imdbID === movieId
+    );
+
+    if (alredyRatedMovie) {
+      startRating = alredyRatedMovie.rating;
+    }
+    return startRating;
+  }
 
   const changeRatingHandle = (event, newValue) => {
     seImdbID(id);
@@ -71,7 +85,7 @@ export const MovieCard = ({ poster, title, year, id, startRating, genre }) => {
       <CardActions>
         <Rating
           name="simple-controlled"
-          value={startRating ?? rating}
+          value={isAlredyRated() ?? rating}
           onChange={changeRatingHandle}
         />
       </CardActions>

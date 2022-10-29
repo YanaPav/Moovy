@@ -52,7 +52,6 @@ export const RatedMoviesPage = () => {
                   year={Year}
                   title={Title}
                   id={imdbID}
-                  startRating={rating}
                   genre={Genre}
                 />
               )
