@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
 import { useParams } from 'react-router-dom';
-import { Rating, Box } from '@mui/material';
+import { Rating, Box, LinearProgress } from '@mui/material';
 import {
   addRatedMovie,
   removeRatedMovie,
@@ -13,7 +13,7 @@ export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const ratedMovies = useSelector(state => state.ratedMovies);
   const [rating, setRating] = useState(isAlredyRated() ?? 0);
-  const { data, error } = useGetMovieByIdQuery(movieId);
+  const { data, error, isLoading } = useGetMovieByIdQuery(movieId);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,6 +40,8 @@ export const MovieDetailsPage = () => {
 
   return (
     <>
+      {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}
+
       {error && (
         <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
           <p>Something goes wrong :( Try again later.</p>
