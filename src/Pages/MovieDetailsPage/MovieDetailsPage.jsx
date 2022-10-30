@@ -9,6 +9,9 @@ import {
   removeRatedMovie,
 } from '../../redux/slices/ratedMoviesSlice';
 import noPoster from '../../images/noPoster.jpg';
+import { useLocation } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { GoBackLink } from './MovieDetailsPage.styled';
 
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -16,6 +19,7 @@ export const MovieDetailsPage = () => {
   const [rating, setRating] = useState(isAlredyRated() ?? 0);
   const { data, error, isLoading } = useGetMovieByIdQuery(movieId);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     if (rating !== null && rating !== 0) {
@@ -41,17 +45,24 @@ export const MovieDetailsPage = () => {
 
   return (
     <>
+      <Container maxWidth="lg" sx={{ mt: 10 }}>
+        <GoBackLink to={location.state?.from || '/'}>
+          <ArrowBackIcon sx={{ marginRight: '4px' }} />
+          Go back
+        </GoBackLink>
+      </Container>
+
       {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}
 
       {error && (
-        <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
+        <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
           <p>Something goes wrong :( Try again later.</p>
           {/* Real error {error.data.Error} */}
         </Container>
       )}
 
       {data?.Error && (
-        <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
+        <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
           <p>{data.Error}</p>
         </Container>
       )}
@@ -60,7 +71,7 @@ export const MovieDetailsPage = () => {
         <Container
           maxWidth="lg"
           sx={{
-            mt: 12,
+            mt: 2,
             display: 'flex',
             alignItems: 'start',
             gap: 4,
@@ -88,7 +99,7 @@ export const MovieDetailsPage = () => {
             </p>
             {data.imdbRating !== 'N/A' && (
               <p>
-                <b>imdbRating: </b>
+                <b>imdbRating:</b>
                 {data.imdbRating}
               </p>
             )}
