@@ -10,7 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import noPoster from '../../noPoster.jpg';
+import noPoster from '../../images/noPoster.jpg';
 import {
   addRatedMovie,
   removeRatedMovie,
@@ -58,7 +58,8 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
   return (
     <Card
       sx={{
-        maxWidth: 300,
+        width: '100%',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -70,9 +71,13 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
           component="img"
           image={poster === 'N/A' ? noPoster : poster}
           alt={title}
-          sx={{ backgroundColor: 'darkgray' }}
+          sx={{
+            backgroundColor: 'darkgray',
+            maxHeight: '470px',
+            maxWidth: '100%',
+          }}
         />
-        <CardContent sx={{ color: 'black' }}>
+        <CardContent>
           <Typography gutterBottom variant="h6" component="h2">
             {title} ({year})
           </Typography>

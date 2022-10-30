@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Box, Container } from '@mui/material';
+import { Box, Container, ListItem } from '@mui/material';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { GenreFilter } from '../../components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from '../../components/NoRatedMovies/NoRatedMovies';
@@ -45,14 +45,18 @@ export const RatedMoviesPage = () => {
           >
             {filtredMovies.map(
               ({ Poster, Title, Year, imdbID, rating, Genre }) => (
-                <MovieCard
-                  key={imdbID}
-                  poster={Poster}
-                  year={Year}
-                  title={Title}
-                  id={imdbID}
-                  genre={Genre}
-                />
+                <ListItem
+                  sx={{ padding: '0', width: '350px', height: '650px' }}
+                >
+                  <MovieCard
+                    key={imdbID}
+                    poster={Poster}
+                    year={Year}
+                    title={Title}
+                    id={imdbID}
+                    genre={Genre}
+                  />
+                </ListItem>
               )
             )}
           </Box>

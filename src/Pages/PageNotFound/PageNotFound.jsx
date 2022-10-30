@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import pageNotFound from '../../pageNotFound.png';
+import pageNotFound from '../../images/pageNotFound.png';
 
 export const PageNotFound = () => {
   return (

@@ -8,6 +8,7 @@ import {
   addRatedMovie,
   removeRatedMovie,
 } from '../../redux/slices/ratedMoviesSlice';
+import noPoster from '../../images/noPoster.jpg';
 
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -65,7 +66,10 @@ export const MovieDetailsPage = () => {
             gap: 4,
           }}
         >
-          <img src={data.Poster} alt={data.Title} />
+          <img
+            src={data.Poster === 'N/A' ? noPoster : data.Poster}
+            alt={data.Title}
+          />
           <div>
             <h2 style={{ marginTop: 0 }}>
               {data.Title} ({data.Year})
@@ -77,15 +81,20 @@ export const MovieDetailsPage = () => {
               <b>Director:</b> {data.Director}
             </p>
             <p>
-              <b>Actors:</b> {data.Actors}
+              <b>Actors:</b> {data.Actors !== 'N/A' && data.Actors}
             </p>
             <p>
               <b>Country:</b> {data.Country}
             </p>
-            <p>
-              <b>imdbRating:</b> {data.imdbRating}
-            </p>
-            <p>{data.Plot}</p>
+            {data.imdbRating !== 'N/A' && (
+              <p>
+                <b>imdbRating: </b>
+                {data.imdbRating}
+              </p>
+            )}
+
+            {data.Plot !== 'N/A' && <p>{data.Plot}</p>}
+
             <Box
               component="div"
               sx={{

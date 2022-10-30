@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { StyledNavLink } from './NavBar.styled';
 // import { Suspense } from 'react';
 
@@ -12,9 +12,12 @@ export const NavBar = () => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'none', sm: 'block', color: 'white' },
+              }}
             >
-              MOOVY
+              <Link to="/">MOOVY</Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               <StyledNavLink to="/" end key="home">
