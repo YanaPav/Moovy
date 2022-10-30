@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Moovy/static/css/main.0f97f430.css",
-    "main.js": "/Moovy/static/js/main.d339ff66.js",
+    "main.js": "/Moovy/static/js/main.bf5708d1.js",
     "static/media/noMoviesPoster.png": "/Moovy/static/media/noMoviesPoster.4a624def7656ea1bd57c.png",
     "static/media/pageNotFound.png": "/Moovy/static/media/pageNotFound.fab8ad695e2026cc86b8.png",
     "static/media/noPoster.jpg": "/Moovy/static/media/noPoster.51f65e5bfc2262c3d1bb.jpg",
     "index.html": "/Moovy/index.html",
     "main.0f97f430.css.map": "/Moovy/static/css/main.0f97f430.css.map",
-    "main.d339ff66.js.map": "/Moovy/static/js/main.d339ff66.js.map"
+    "main.bf5708d1.js.map": "/Moovy/static/js/main.bf5708d1.js.map"
   },
   "entrypoints": [
     "static/css/main.0f97f430.css",
-    "static/js/main.d339ff66.js"
+    "static/js/main.bf5708d1.js"
   ]
 }
