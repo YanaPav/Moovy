@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { StyledNavLink } from './NavBar.styled';
+// import { Suspense } from 'react';
 
 export const NavBar = () => {
   return (
@@ -26,8 +27,9 @@ export const NavBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-
+      {/* <Suspense fallback={null}> */}
       <Outlet />
+      {/* </Suspense> */}
     </>
   );
 };
