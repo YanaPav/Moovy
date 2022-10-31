@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import pageNotFound from '../../images/pageNotFound.png';
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
   return (
     <Container
       maxWidth="lg"
@@ -16,3 +16,5 @@ export const PageNotFound = () => {
     </Container>
   );
 };
+
+export default PageNotFound;

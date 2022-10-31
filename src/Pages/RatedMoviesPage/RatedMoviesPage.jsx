@@ -7,7 +7,7 @@ import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { GenreFilter } from '../../components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from '../../components/NoRatedMovies/NoRatedMovies';
 
-export const RatedMoviesPage = () => {
+const RatedMoviesPage = () => {
   const ratedMovies = useSelector(state => state.ratedMovies);
   const isRatedMovies = ratedMovies.length > 0;
   const [genreFilterValue, setGenreFilterValue] = useState('');
@@ -79,3 +79,5 @@ export const RatedMoviesPage = () => {
     </Container>
   );
 };
+
+export default RatedMoviesPage;
