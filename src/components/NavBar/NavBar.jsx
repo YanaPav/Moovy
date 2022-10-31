@@ -1,11 +1,9 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
 import { StyledNavLink } from './NavBar.styled';
 import { Suspense } from 'react';
 
 export const NavBar = () => {
-  const location = useLocation();
-
   return (
     <>
       <AppBar component="nav">
@@ -26,12 +24,7 @@ export const NavBar = () => {
               <StyledNavLink to="/" end key="home">
                 Home
               </StyledNavLink>
-              <StyledNavLink
-                to="/rated"
-                end
-                key="rated"
-                state={{ from: location }}
-              >
+              <StyledNavLink to="/rated" end key="rated">
                 My movies
               </StyledNavLink>
             </Box>
