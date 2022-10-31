@@ -70,7 +70,7 @@ export const MovieDetailsCard = () => {
         </p>
         {data.imdbRating !== 'N/A' && (
           <p>
-            <b>imdbRating:</b>
+            <b>imdbRating:&nbsp;</b>
             {data.imdbRating}
           </p>
         )}

@@ -13,7 +13,6 @@ const MovieDetailsPage = lazy(() =>
 const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
-  console.log(RatedMoviesPage);
   return (
     <>
       <Routes>

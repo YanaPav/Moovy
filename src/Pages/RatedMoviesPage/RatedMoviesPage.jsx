@@ -57,22 +57,20 @@ const RatedMoviesPage = () => {
               padding: 0,
             }}
           >
-            {filtredMovies.map(
-              ({ Poster, Title, Year, imdbID, rating, Genre }) => (
-                <ListItem
-                  key={imdbID}
-                  sx={{ padding: '0', width: '350px', height: '650px' }}
-                >
-                  <MovieCard
-                    poster={Poster}
-                    year={Year}
-                    title={Title}
-                    id={imdbID}
-                    genre={Genre}
-                  />
-                </ListItem>
-              )
-            )}
+            {filtredMovies.map(({ Poster, Title, Year, imdbID, Genre }) => (
+              <ListItem
+                key={imdbID}
+                sx={{ padding: '0', width: '350px', height: '650px' }}
+              >
+                <MovieCard
+                  poster={Poster}
+                  year={Year}
+                  title={Title}
+                  id={imdbID}
+                  genre={Genre}
+                />
+              </ListItem>
+            ))}
           </Box>
         </>
       )}
