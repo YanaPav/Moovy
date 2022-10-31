@@ -1,17 +1,22 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Scroll from 'react-scroll';
 import { Box, Container, ListItem, Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { GenreFilter } from '../../components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from '../../components/NoRatedMovies/NoRatedMovies';
+import { ScrollUp } from '../../components/ScrollUp/ScrollUp';
 
 const RatedMoviesPage = () => {
   const ratedMovies = useSelector(state => state.ratedMovies);
   const isRatedMovies = ratedMovies.length > 0;
   const [genreFilterValue, setGenreFilterValue] = useState('');
   const navigate = useNavigate();
+
+  let scroll = Scroll.animateScroll;
+  scroll.scrollToTop();
 
   const handlerFilterChange = e => {
     setGenreFilterValue(e.currentTarget.value);
@@ -74,6 +79,7 @@ const RatedMoviesPage = () => {
           </Box>
         </>
       )}
+      <ScrollUp />
     </Container>
   );
 };
