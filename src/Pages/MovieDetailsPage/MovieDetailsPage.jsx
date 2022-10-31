@@ -3,15 +3,14 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
 import { useParams } from 'react-router-dom';
-import { Rating, Box, LinearProgress } from '@mui/material';
+import { Rating, Box, LinearProgress, Button } from '@mui/material';
 import {
   addRatedMovie,
   removeRatedMovie,
 } from '../../redux/slices/ratedMoviesSlice';
 import noPoster from '../../images/noPoster.jpg';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { GoBackLink } from './MovieDetailsPage.styled';
 
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -19,7 +18,7 @@ export const MovieDetailsPage = () => {
   const [rating, setRating] = useState(isAlredyRated() ?? 0);
   const { data, error, isLoading } = useGetMovieByIdQuery(movieId);
   const dispatch = useDispatch();
-  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (rating !== null && rating !== 0) {
@@ -46,10 +45,16 @@ export const MovieDetailsPage = () => {
   return (
     <>
       <Container maxWidth="lg" sx={{ mt: 10 }}>
-        <GoBackLink to={location.state?.from || '/'}>
-          <ArrowBackIcon sx={{ marginRight: '4px' }} />
+        <Button
+          variant="contained"
+          size="small"
+          startIcon={<ArrowBackIcon />}
+          type="button"
+          onClick={() => navigate(-1)}
+          sx={{ height: '40px', marginRight: 'auto' }}
+        >
           Go back
-        </GoBackLink>
+        </Button>
       </Container>
 
       {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}

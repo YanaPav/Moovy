@@ -9,6 +9,7 @@ export const GenreFilter = ({ value, onChange }) => {
       name="filter"
       variant="outlined"
       size="small"
+      sx={{ marginLeft: '10px' }}
       value={value}
       onChange={onChange}
     />

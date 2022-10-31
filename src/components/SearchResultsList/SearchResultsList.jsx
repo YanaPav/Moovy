@@ -1,4 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import * as Scroll from 'react-scroll';
 import {
   LinearProgress,
   Pagination,
@@ -8,12 +9,13 @@ import {
 } from '@mui/material';
 import { useGetMoviesByTitleQuery } from '../../redux/slices/searchMoviesSlice';
 import { MovieCard } from '../MovieCard/MovieCard';
-import { setPage } from '../../redux/slices/filterValuesSlice';
-import * as Scroll from 'react-scroll';
 
 export const SearchResultsList = () => {
-  const dispatch = useDispatch();
-  const { title, releaseYear, page } = useSelector(state => state.filterValues);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page');
+  const title = searchParams.get('title');
+  const releaseYear = searchParams.get('releaseYear');
+
   const { data, error, isLoading } = useGetMoviesByTitleQuery(
     {
       title,
@@ -26,7 +28,12 @@ export const SearchResultsList = () => {
   const pageClickHandle = e => {
     let scroll = Scroll.animateScroll;
     scroll.scrollToTop();
-    dispatch(setPage(e.target.textContent));
+
+    if (releaseYear) {
+      setSearchParams({ title, releaseYear, page: e.target.textContent });
+      return;
+    }
+    setSearchParams({ title, page: e.target.textContent });
   };
 
   return (
@@ -50,9 +57,11 @@ export const SearchResultsList = () => {
           }}
         >
           {data.Search?.map(({ Poster, Title, imdbID, Year }) => (
-            <ListItem sx={{ padding: '0', width: '350px', height: '620px' }}>
+            <ListItem
+              key={imdbID}
+              sx={{ padding: '0', width: '350px', height: '620px' }}
+            >
               <MovieCard
-                key={imdbID}
                 poster={Poster}
                 title={Title}
                 id={imdbID}
@@ -68,6 +77,7 @@ export const SearchResultsList = () => {
           <Pagination
             hidePrevButton
             hideNextButton
+            page={Number(page) || 1}
             count={Math.ceil(data.totalResults / 10)}
             onClick={pageClickHandle}
             sx={{ marginLeft: 'auto', marginRight: 'auto', padding: '16px 0' }}

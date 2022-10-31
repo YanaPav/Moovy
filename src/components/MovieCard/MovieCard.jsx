@@ -1,3 +1,6 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   CardActions,
   CardContent,
@@ -6,10 +9,7 @@ import {
   Card,
   Rating,
 } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import noPoster from '../../images/noPoster.jpg';
 import {
   addRatedMovie,

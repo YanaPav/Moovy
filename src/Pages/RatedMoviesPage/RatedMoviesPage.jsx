@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Box, Container, ListItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Box, Container, ListItem, Button } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { GenreFilter } from '../../components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from '../../components/NoRatedMovies/NoRatedMovies';
@@ -9,17 +11,29 @@ export const RatedMoviesPage = () => {
   const ratedMovies = useSelector(state => state.ratedMovies);
   const isRatedMovies = ratedMovies.length > 0;
   const [genreFilterValue, setGenreFilterValue] = useState('');
+  const navigate = useNavigate();
 
   const handlerFilterChange = e => {
     setGenreFilterValue(e.currentTarget.value);
   };
 
   const filtredMovies = ratedMovies.filter(({ Genre }) =>
-    Genre.toLowerCase().includes(genreFilterValue.toLowerCase())
+    Genre?.toLowerCase().includes(genreFilterValue.toLowerCase())
   );
 
   return (
     <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
+      <Button
+        variant="contained"
+        size="small"
+        startIcon={<ArrowBackIcon />}
+        type="button"
+        onClick={() => navigate(-1)}
+        sx={{ height: '40px', marginRight: 'auto' }}
+      >
+        Go back
+      </Button>
+
       {!isRatedMovies && <NoRatedMovies />}
 
       {isRatedMovies && (
@@ -46,10 +60,10 @@ export const RatedMoviesPage = () => {
             {filtredMovies.map(
               ({ Poster, Title, Year, imdbID, rating, Genre }) => (
                 <ListItem
+                  key={imdbID}
                   sx={{ padding: '0', width: '350px', height: '650px' }}
                 >
                   <MovieCard
-                    key={imdbID}
                     poster={Poster}
                     year={Year}
                     title={Title}

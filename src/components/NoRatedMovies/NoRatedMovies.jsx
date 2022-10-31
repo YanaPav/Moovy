@@ -1,5 +1,5 @@
-import noMoviesPoster from '../../images/noMoviesPoster.png';
 import { Container } from '@mui/material';
+import noMoviesPoster from '../../images/noMoviesPoster.png';
 
 export const NoRatedMovies = () => {
   return (

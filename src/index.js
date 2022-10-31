@@ -10,6 +10,7 @@ import { HashRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter>
+      {/* I know HashRouter is not recommended to use and usualy I use BrowserRouter, but in this case HashRouter was the only way to solve Netlify page refresh bug that worked*/}
       <Provider store={store}>
         <App />
       </Provider>

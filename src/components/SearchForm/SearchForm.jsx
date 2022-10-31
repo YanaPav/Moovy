@@ -1,22 +1,26 @@
+import { useSearchParams } from 'react-router-dom';
 import { Button, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledTextField, StyledForm } from './SearchForm.styled';
-import { useDispatch } from 'react-redux';
-import { setFilters } from '../../redux/slices/filterValuesSlice';
 
 export const SearchForm = () => {
-  const dispatch = useDispatch();
+  const [, setSearchParams] = useSearchParams();
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const form = e.target.elements;
-    dispatch(
-      setFilters({
+
+    if (form.releaseYear.value.trim()) {
+      setSearchParams({
         title: form.title.value.trim(),
         releaseYear: form.releaseYear.value.trim(),
-      })
-    );
+      });
+      return;
+    }
+    setSearchParams({
+      title: form.title.value.trim(),
+    });
   };
 
   return (
