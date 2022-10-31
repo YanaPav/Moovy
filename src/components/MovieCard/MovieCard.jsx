@@ -85,7 +85,7 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
           )}
         </CardContent>
       </Link>
-      <CardActions sx={{ alignSelf: 'end' }}>
+      <CardActions sx={{ alignSelf: 'end', position: 'absolute', bottom: '0' }}>
         <Rating
           name="simple-controlled"
           value={isAlredyRated() ?? rating}

@@ -36,6 +36,8 @@ export const SearchResultsList = () => {
     setSearchParams({ title, page: e.target.textContent });
   };
 
+  if (!title) return;
+
   return (
     <>
       {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}
@@ -80,7 +82,11 @@ export const SearchResultsList = () => {
             page={Number(page) || 1}
             count={Math.ceil(data.totalResults / 10)}
             onClick={pageClickHandle}
-            sx={{ marginLeft: 'auto', marginRight: 'auto', padding: '16px 0' }}
+            sx={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: '16px 0',
+            }}
           />
         </Stack>
       )}
