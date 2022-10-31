@@ -1,5 +1,12 @@
 import { Outlet, Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Container,
+  LinearProgress,
+} from '@mui/material';
 import { StyledNavLink } from './NavBar.styled';
 import { Suspense } from 'react';
 
@@ -31,7 +38,7 @@ export const NavBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Suspense fallback={null}>
+      <Suspense fallback={<LinearProgress />}>
         <Outlet />
       </Suspense>
     </>
