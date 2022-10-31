@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Container, Rating, Box } from '@mui/material';
-import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
-import {
-  addRatedMovie,
-  removeRatedMovie,
-} from '../../redux/slices/ratedMoviesSlice';
-import noPoster from '../../images/noPoster.jpg';
+import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
+import { addRatedMovie, removeRatedMovie } from 'redux/slices/ratedMoviesSlice';
+import noPoster from 'images/noPoster.jpg';
 
 export const MovieDetailsCard = () => {
   const { movieId } = useParams();

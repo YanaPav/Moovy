@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { LinearProgress, Button, Container } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
-import { MovieDetailsCard } from '../../components/MovieDetailsCard/MovieDetailsCard';
+import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
+import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();

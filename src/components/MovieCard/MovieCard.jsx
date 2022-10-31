@@ -10,12 +10,9 @@ import {
   Rating,
 } from '@mui/material';
 import PropTypes from 'prop-types';
-import noPoster from '../../images/noPoster.jpg';
-import {
-  addRatedMovie,
-  removeRatedMovie,
-} from '../../redux/slices/ratedMoviesSlice';
-import { useGetMovieByIdQuery } from '../../redux/slices/getMovieDetailsSlice';
+import noPoster from 'images/noPoster.jpg';
+import { addRatedMovie, removeRatedMovie } from 'redux/slices/ratedMoviesSlice';
+import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
 
 export const MovieCard = ({ poster, title, year, id, genre }) => {
   const [imdbID, seImdbID] = useState(null);

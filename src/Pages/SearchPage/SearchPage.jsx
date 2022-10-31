@@ -1,5 +1,5 @@
-import { SearchResultsList } from '../../components/SearchResultsList/SearchResultsList';
-import { SearchForm } from '../../components/SearchForm/SearchForm';
+import { SearchResultsList } from 'components/SearchResultsList/SearchResultsList';
+import { SearchForm } from 'components/SearchForm/SearchForm';
 import Container from '@mui/material/Container';
 
 export const SearchPage = () => {

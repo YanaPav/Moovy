@@ -7,7 +7,7 @@ import {
   Box,
   ListItem,
 } from '@mui/material';
-import { useGetMoviesByTitleQuery } from '../../redux/slices/searchMoviesSlice';
+import { useGetMoviesByTitleQuery } from 'redux/slices/searchMoviesSlice';
 import { MovieCard } from '../MovieCard/MovieCard';
 
 export const SearchResultsList = () => {
