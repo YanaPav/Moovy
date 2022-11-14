@@ -2,7 +2,7 @@
   "name": "moovy-react-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yanapavmoovy.netlify.app/",
+  "homepage": "https://yanapav.github.io/moovy/",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",

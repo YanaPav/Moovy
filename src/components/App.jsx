@@ -1,16 +1,16 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
-import { SearchPage } from 'Pages/SearchPage/SearchPage';
+import { SearchPage } from 'pages/SearchPage/SearchPage';
 import { NavBar } from 'components/NavBar/NavBar';
 
 const RatedMoviesPage = lazy(() =>
-  import('Pages/RatedMoviesPage/RatedMoviesPage')
+  import('pages/RatedMoviesPage/RatedMoviesPage')
 );
 const MovieDetailsPage = lazy(() =>
-  import('Pages/MovieDetailsPage/MovieDetailsPage')
+  import('pages/MovieDetailsPage/MovieDetailsPage')
 );
-const PageNotFound = lazy(() => import('Pages/PageNotFound/PageNotFound'));
+const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
   return (
