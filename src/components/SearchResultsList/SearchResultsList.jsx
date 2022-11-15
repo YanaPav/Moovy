@@ -1,15 +1,20 @@
+// react
 import { useSearchParams } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
-import {
-  LinearProgress,
-  Pagination,
-  Stack,
-  Box,
-  ListItem,
-} from '@mui/material';
+// libraries
+import { Stack } from '@mui/material';
+// redux-components
 import { useGetMoviesByTitleQuery } from 'redux/slices/searchMoviesSlice';
+// components
 import { MovieCard } from '../MovieCard/MovieCard';
+import {
+  SearchList,
+  StyledListItem,
+  StyledParination,
+  StyledLoader,
+} from './SearchResultsList.styled';
 
+//
 export const SearchResultsList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page');
@@ -40,7 +45,7 @@ export const SearchResultsList = () => {
 
   return (
     <>
-      {isLoading && <LinearProgress sx={{ marginTop: '14px' }} />}
+      {isLoading && <StyledLoader />}
 
       {error && <p>Something goes wrong :( Try again later.</p>}
       {/* Real error {error.data.Error} */}
@@ -48,45 +53,28 @@ export const SearchResultsList = () => {
       {data?.Error && <p>{data.Error}</p>}
 
       {data && !data?.Error && (
-        <Box
-          component="ul"
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'center',
-            padding: 0,
-          }}
-        >
+        <SearchList>
           {data.Search?.map(({ Poster, Title, imdbID, Year }) => (
-            <ListItem
-              key={imdbID}
-              sx={{ padding: '0', width: '350px', height: '620px' }}
-            >
+            <StyledListItem key={imdbID}>
               <MovieCard
                 poster={Poster}
                 title={Title}
                 id={imdbID}
                 year={Year}
               />
-            </ListItem>
+            </StyledListItem>
           ))}
-        </Box>
+        </SearchList>
       )}
 
       {data?.totalResults > 10 && (
         <Stack spacing={2}>
-          <Pagination
+          <StyledParination
             hidePrevButton
             hideNextButton
             page={Number(page) || 1}
             count={Math.ceil(data.totalResults / 10)}
             onClick={pageClickHandle}
-            sx={{
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              padding: '16px 0',
-            }}
           />
         </Stack>
       )}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { StyledBtn } from './ScrollUp.styled';
 
 export const ScrollUp = () => {
   const [showScrollUpBtn, setShowScrollUpBtn] = useState(false);
@@ -24,15 +24,14 @@ export const ScrollUp = () => {
   return (
     <>
       {showScrollUpBtn && (
-        <Button
+        <StyledBtn
           onClick={scrollUp}
           type="button"
           variant="contained"
           size="small"
-          sx={{ position: 'fixed', right: '10px', bottom: '10px' }}
         >
           <ArrowUpwardIcon />
-        </Button>
+        </StyledBtn>
       )}
     </>
   );

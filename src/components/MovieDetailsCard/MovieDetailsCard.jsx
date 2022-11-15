@@ -1,15 +1,22 @@
+// react
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Container, Rating, Box } from '@mui/material';
+// libraries
+import { Container, Rating } from '@mui/material';
+// redux-components
 import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
+import { selectRatedMovies } from 'redux/selectors';
 import { addRatedMovie, removeRatedMovie } from 'redux/slices/ratedMoviesSlice';
+// components
 import noPoster from 'images/noPoster.jpg';
+import { RatingWrap } from './MovieDetailsCard.styled';
 
+//
 export const MovieDetailsCard = () => {
   const { movieId } = useParams();
   const { data } = useGetMovieByIdQuery(movieId);
-  const ratedMovies = useSelector(state => state.ratedMovies);
+  const ratedMovies = useSelector(selectRatedMovies);
   const [rating, setRating] = useState(isAlredyRated() ?? 0);
   const dispatch = useDispatch();
 
@@ -74,22 +81,14 @@ export const MovieDetailsCard = () => {
 
         {data.Plot !== 'N/A' && <p>{data.Plot}</p>}
 
-        <Box
-          component="div"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '4px 0',
-          }}
-        >
+        <RatingWrap>
           <b>My rating:</b>
           <Rating
             name="simple-controlled"
             value={rating}
             onChange={(_, newValue) => setRating(newValue)}
           />
-        </Box>
+        </RatingWrap>
       </div>
     </Container>
   );

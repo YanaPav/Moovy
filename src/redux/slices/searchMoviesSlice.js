@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {API_KEY, baseUrl} from '../apiVariables'
 
-const API_KEY = '5d2eed6b'
-
+// 
 export const searchMoviesApi = createApi({
   reducerPath: 'searchMoviesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `https://www.omdbapi.com/` }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getMoviesByTitle: builder.query({
         query: ({ title, releaseYear, page = 1 }) => `?type=movie&apikey=${API_KEY}&s=${title}&page=${page}&y=${releaseYear}`,

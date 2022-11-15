@@ -1,7 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import { Button, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { StyledTextField, StyledForm } from './SearchForm.styled';
+import { StyledForm } from './SearchForm.styled';
+import { StyledTextField } from '../Common/StyledTextField.styled';
 
 export const SearchForm = () => {
   const [, setSearchParams] = useSearchParams();

@@ -1,0 +1,1 @@
+export const selectRatedMovies = state => state.ratedMovies

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// 
 const ratedMoviesSlice = createSlice({
   name: "ratedMovies",
     initialState: [],

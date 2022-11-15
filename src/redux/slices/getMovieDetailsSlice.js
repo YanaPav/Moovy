@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {API_KEY, baseUrl} from '../apiVariables'
 
-const API_KEY = '5d2eed6b'
-
+// 
 export const getMovieDetailsApi  = createApi({
   reducerPath: 'getMovieDetailsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `https://www.omdbapi.com/` }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getMovieById: builder.query({
       query: (imdbID) => `?apikey=${API_KEY}&i=${imdbID}&plot=full`,

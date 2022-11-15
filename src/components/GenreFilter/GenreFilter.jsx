@@ -1,5 +1,5 @@
-import { StyledTextField } from '../SearchForm/SearchForm.styled';
 import PropTypes from 'prop-types';
+import { StyledTextField } from '../Common/StyledTextField.styled';
 
 export const GenreFilter = ({ value, onChange }) => {
   return (
@@ -9,7 +9,6 @@ export const GenreFilter = ({ value, onChange }) => {
       name="filter"
       variant="outlined"
       size="small"
-      sx={{ marginLeft: '10px' }}
       value={value}
       onChange={onChange}
     />

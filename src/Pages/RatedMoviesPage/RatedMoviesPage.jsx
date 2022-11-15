@@ -1,21 +1,19 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
-import { Box, Container, ListItem, Button } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Container, ListItem } from '@mui/material';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { GenreFilter } from 'components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from 'components/NoRatedMovies/NoRatedMovies';
 import { ScrollUp } from 'components/ScrollUp/ScrollUp';
+import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
 
 const RatedMoviesPage = () => {
   const ratedMovies = useSelector(state => state.ratedMovies);
   const isRatedMovies = ratedMovies.length > 0;
   const [genreFilterValue, setGenreFilterValue] = useState('');
-  const navigate = useNavigate();
 
-  let scroll = Scroll.animateScroll;
+  const scroll = Scroll.animateScroll;
   scroll.scrollToTop();
 
   const handlerFilterChange = e => {
@@ -28,16 +26,7 @@ const RatedMoviesPage = () => {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
-      <Button
-        variant="contained"
-        size="small"
-        startIcon={<ArrowBackIcon />}
-        type="button"
-        onClick={() => navigate(-1)}
-        sx={{ height: '40px', marginRight: 'auto' }}
-      >
-        Go back
-      </Button>
+      <GoBackBtn />
 
       {!isRatedMovies && <NoRatedMovies />}
 

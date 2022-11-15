@@ -1,40 +1,30 @@
-import { Outlet, Link } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  Container,
-  LinearProgress,
-} from '@mui/material';
-import { StyledNavLink } from './NavBar.styled';
+// react
 import { Suspense } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+// libraries
+import { AppBar, Toolbar, Container, LinearProgress } from '@mui/material';
+// components
+import { StyledNavLink, StyledTypography, StyledBox } from './NavBar.styled';
 
+//
 export const NavBar = () => {
   return (
     <>
       <AppBar component="nav">
         <Container maxWidth="xl">
           <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                flexGrow: 1,
-                display: { xs: 'none', sm: 'block', color: 'white' },
-              }}
-            >
+            <StyledTypography variant="h6" component="div">
               <Link to="/">MOOVY</Link>
-            </Typography>
+            </StyledTypography>
 
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <StyledBox>
               <StyledNavLink to="/" end key="home">
                 Home
               </StyledNavLink>
               <StyledNavLink to="/rated" end key="rated">
                 My movies
               </StyledNavLink>
-            </Box>
+            </StyledBox>
           </Toolbar>
         </Container>
       </AppBar>

@@ -1,26 +1,26 @@
+// react
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Card,
-  Rating,
-} from '@mui/material';
 import PropTypes from 'prop-types';
-import noPoster from 'images/noPoster.jpg';
+// libraries
+import { CardContent, Typography } from '@mui/material';
+// redux-components
 import { addRatedMovie, removeRatedMovie } from 'redux/slices/ratedMoviesSlice';
 import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
+import { selectRatedMovies } from 'redux/selectors';
+// components
+import { StyledRating, StyledCardMedia, StyledCard } from './MovieCard.styled';
+import noPoster from 'images/noPoster.jpg';
 
+//
 export const MovieCard = ({ poster, title, year, id, genre }) => {
   const [imdbID, seImdbID] = useState(null);
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
   const { data } = useGetMovieByIdQuery(imdbID, { skip: !imdbID });
   const location = useLocation();
-  const ratedMovies = useSelector(state => state.ratedMovies);
+  const ratedMovies = useSelector(selectRatedMovies);
 
   useEffect(() => {
     if (!data) return;
@@ -53,26 +53,12 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
   };
 
   return (
-    <Card
-      sx={{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        textAlign: 'left',
-      }}
-    >
+    <StyledCard>
       <Link to={`/movie/${imdbID ?? id}`} state={{ from: location }}>
-        <CardMedia
+        <StyledCardMedia
           component="img"
           image={poster === 'N/A' ? noPoster : poster}
           alt={title}
-          sx={{
-            backgroundColor: 'darkgray',
-            maxHeight: '470px',
-            maxWidth: '100%',
-          }}
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h2">
@@ -85,14 +71,12 @@ export const MovieCard = ({ poster, title, year, id, genre }) => {
           )}
         </CardContent>
       </Link>
-      <CardActions sx={{ alignSelf: 'end', position: 'absolute', bottom: '0' }}>
-        <Rating
-          name="simple-controlled"
-          value={isAlredyRated() ?? rating}
-          onChange={changeRatingHandle}
-        />
-      </CardActions>
-    </Card>
+      <StyledRating
+        name="simple-controlled"
+        value={isAlredyRated() ?? rating}
+        onChange={changeRatingHandle}
+      />
+    </StyledCard>
   );
 };
 

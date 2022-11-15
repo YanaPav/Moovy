@@ -1,9 +1,12 @@
+// react
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+// libraries
 import CssBaseline from '@mui/material/CssBaseline';
-import { SearchPage } from 'pages/SearchPage/SearchPage';
+// components
 import { NavBar } from 'components/NavBar/NavBar';
-
+// pages
+import { SearchPage } from 'pages/SearchPage/SearchPage';
 const RatedMoviesPage = lazy(() =>
   import('pages/RatedMoviesPage/RatedMoviesPage')
 );
@@ -12,6 +15,7 @@ const MovieDetailsPage = lazy(() =>
 );
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
+//
 export const App = () => {
   return (
     <>
