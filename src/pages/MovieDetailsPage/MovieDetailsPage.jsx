@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
 // components
 import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
-import { GoBackBtn } from '../../GoBackBtn/GoBackBtn';
-import { Loader } from '../../Common/Loader.styled';
+import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
+import { Loader } from 'components/Common/Loader.styled';
 
 //
 const MovieDetailsPage = () => {
