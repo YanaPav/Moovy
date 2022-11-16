@@ -22,7 +22,7 @@ export const RatedMoviesList = ({ filtredMovies }) => {
 };
 
 RatedMoviesList.propTypes = {
-  filtredMovies: PropTypes.objectOf(
+  filtredMovies: PropTypes.arrayOf(
     PropTypes.shape({
       Poster: PropTypes.string.isRequired,
       Title: PropTypes.string.isRequired,
