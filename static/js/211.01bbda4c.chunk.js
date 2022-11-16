@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmoovy_react_template=self.webpackChunkmoovy_react_template||[]).push([[211],{9211:function(t,e,n){n.r(e);var a=n(803),c=n(3600),i=n(184);e.default=function(){return(0,i.jsx)(a.Z,{maxWidth:"lg",sx:{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center"},children:(0,i.jsx)("img",{src:c,alt:"Page not found",width:450})})}},3600:function(t,e,n){t.exports=n.p+"static/media/pageNotFound.fab8ad695e2026cc86b8.png"}}]);
-//# sourceMappingURL=211.01bbda4c.chunk.js.map
