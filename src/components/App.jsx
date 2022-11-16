@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 // components
 import { NavBar } from 'components/NavBar/NavBar';
+import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';
 // pages
 import SearchPage from 'pages/SearchPage/SearchPage';
 const RatedMoviesPage = lazy(() =>
@@ -27,7 +28,7 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
-      <CssBaseline />
+      <GlobalStyles />
     </>
   );
 };
