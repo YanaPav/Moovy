@@ -1,7 +1,7 @@
 import { SearchResultsList } from 'components/SearchResultsList/SearchResultsList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
-export const SearchPage = () => {
+const SearchPage = () => {
   return (
     <>
       <SearchForm />
@@ -9,3 +9,5 @@ export const SearchPage = () => {
     </>
   );
 };
+
+export default SearchPage;
