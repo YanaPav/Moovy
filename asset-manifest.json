@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/moovy/static/css/main.0f97f430.css",
-    "main.js": "/moovy/static/js/main.b6a5289f.js",
-    "static/js/914.908e9dd5.chunk.js": "/moovy/static/js/914.908e9dd5.chunk.js",
-    "static/js/929.e64105a2.chunk.js": "/moovy/static/js/929.e64105a2.chunk.js",
-    "static/js/214.1b044f22.chunk.js": "/moovy/static/js/214.1b044f22.chunk.js",
+    "main.js": "/moovy/static/js/main.b299ae2f.js",
+    "static/js/663.5cc0e4f2.chunk.js": "/moovy/static/js/663.5cc0e4f2.chunk.js",
+    "static/js/798.e6dfd4ba.chunk.js": "/moovy/static/js/798.e6dfd4ba.chunk.js",
+    "static/js/446.81a16c99.chunk.js": "/moovy/static/js/446.81a16c99.chunk.js",
     "static/media/noMoviesPoster.png": "/moovy/static/media/noMoviesPoster.4a624def7656ea1bd57c.png",
     "static/media/pageNotFound.png": "/moovy/static/media/pageNotFound.fab8ad695e2026cc86b8.png",
     "static/media/noPoster.jpg": "/moovy/static/media/noPoster.51f65e5bfc2262c3d1bb.jpg",
     "index.html": "/moovy/index.html",
     "main.0f97f430.css.map": "/moovy/static/css/main.0f97f430.css.map",
-    "main.b6a5289f.js.map": "/moovy/static/js/main.b6a5289f.js.map",
-    "914.908e9dd5.chunk.js.map": "/moovy/static/js/914.908e9dd5.chunk.js.map",
-    "929.e64105a2.chunk.js.map": "/moovy/static/js/929.e64105a2.chunk.js.map",
-    "214.1b044f22.chunk.js.map": "/moovy/static/js/214.1b044f22.chunk.js.map"
+    "main.b299ae2f.js.map": "/moovy/static/js/main.b299ae2f.js.map",
+    "663.5cc0e4f2.chunk.js.map": "/moovy/static/js/663.5cc0e4f2.chunk.js.map",
+    "798.e6dfd4ba.chunk.js.map": "/moovy/static/js/798.e6dfd4ba.chunk.js.map",
+    "446.81a16c99.chunk.js.map": "/moovy/static/js/446.81a16c99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0f97f430.css",
-    "static/js/main.b6a5289f.js"
+    "static/js/main.b299ae2f.js"
   ]
 }
