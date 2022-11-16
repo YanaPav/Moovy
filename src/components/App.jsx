@@ -6,14 +6,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 // components
 import { NavBar } from 'components/NavBar/NavBar';
 // pages
-import SearchPage from 'pages/SearchPage/SearchPage';
+import SearchPage from 'components/pages/SearchPage/SearchPage';
 const RatedMoviesPage = lazy(() =>
-  import('pages/RatedMoviesPage/RatedMoviesPage')
+  import('components/pages/RatedMoviesPage/RatedMoviesPage')
 );
 const MovieDetailsPage = lazy(() =>
-  import('pages/MovieDetailsPage/MovieDetailsPage')
+  import('components/pages/MovieDetailsPage/MovieDetailsPage')
 );
-const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
+const PageNotFound = lazy(() =>
+  import('components/pages/PageNotFound/PageNotFound')
+);
 
 //
 export const App = () => {
