@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // libraries
-import { Container, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 // redux-components
 import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
 import { selectRatedMovies } from 'redux/selectors';
 import { addRatedMovie, removeRatedMovie } from 'redux/slices/ratedMoviesSlice';
 // components
 import noPoster from 'images/noPoster.jpg';
-import { RatingWrap } from './MovieDetailsCard.styled';
+import { RatingWrap, MovieDetailsWrap } from './MovieDetailsCard.styled';
 
 //
 export const MovieDetailsCard = () => {
@@ -43,15 +43,7 @@ export const MovieDetailsCard = () => {
   }
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        mt: 2,
-        display: 'flex',
-        alignItems: 'start',
-        gap: 4,
-      }}
-    >
+    <MovieDetailsWrap>
       <img
         src={data.Poster === 'N/A' ? noPoster : data.Poster}
         alt={data.Title}
@@ -90,6 +82,6 @@ export const MovieDetailsCard = () => {
           />
         </RatingWrap>
       </div>
-    </Container>
+    </MovieDetailsWrap>
   );
 };

@@ -5,6 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // components
 import { StyledBtn } from './GoBackBtn.styled';
 
+//
 export const GoBackBtn = () => {
   const navigate = useNavigate();
 

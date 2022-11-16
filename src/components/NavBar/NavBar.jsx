@@ -5,13 +5,14 @@ import { Outlet, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Container, LinearProgress } from '@mui/material';
 // components
 import { StyledNavLink, StyledTypography, StyledBox } from './NavBar.styled';
+import { ContentContainer } from '../ContentContainer/ContentContainer';
 
 //
 export const NavBar = () => {
   return (
     <>
       <AppBar component="nav">
-        <Container maxWidth="xl">
+        <Container maxWidth="lx">
           <Toolbar>
             <StyledTypography variant="h6" component="div">
               <Link to="/">MOOVY</Link>
@@ -29,7 +30,9 @@ export const NavBar = () => {
         </Container>
       </AppBar>
       <Suspense fallback={<LinearProgress />}>
-        <Outlet />
+        <ContentContainer>
+          <Outlet />
+        </ContentContainer>
       </Suspense>
     </>
   );

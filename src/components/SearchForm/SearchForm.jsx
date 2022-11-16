@@ -1,9 +1,13 @@
+// react
 import { useSearchParams } from 'react-router-dom';
-import { Button, Stack } from '@mui/material';
+// libraries
+import { Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+// components
 import { StyledForm } from './SearchForm.styled';
 import { StyledTextField } from '../Common/StyledTextField.styled';
 
+// 
 export const SearchForm = () => {
   const [, setSearchParams] = useSearchParams();
 
@@ -26,39 +30,31 @@ export const SearchForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{ marginLeft: 'auto', marginRight: 'auto' }}
+      <StyledTextField
+        label="Type movie title"
+        variant="outlined"
+        size="small"
+        name="title"
+        required
+      />
+      <StyledTextField
+        label="Type release year"
+        variant="outlined"
+        size="small"
+        name="releaseYear"
+        inputProps={{
+          pattern: '[0-9]{4}',
+          title: 'YYYY',
+        }}
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        size="small"
+        startIcon={<SearchIcon />}
       >
-        <StyledTextField
-          id="outlined-basic"
-          label="Type movie title"
-          variant="outlined"
-          size="small"
-          name="title"
-          required
-        />
-        <StyledTextField
-          id="outlined-basic"
-          label="Type release year"
-          variant="outlined"
-          size="small"
-          name="releaseYear"
-          inputProps={{
-            pattern: '[0-9]{4}',
-            title: 'YYYY',
-          }}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          size="small"
-          startIcon={<SearchIcon />}
-        >
-          Search
-        </Button>
-      </Stack>
+        Search
+      </Button>
     </StyledForm>
   );
 };

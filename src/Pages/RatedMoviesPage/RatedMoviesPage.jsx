@@ -1,15 +1,24 @@
+// react
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import * as Scroll from 'react-scroll';
-import { Box, Container, ListItem } from '@mui/material';
-import { MovieCard } from 'components/MovieCard/MovieCard';
+// redux-components
+import { selectRatedMovies } from 'redux/selectors';
+// components
 import { GenreFilter } from 'components/GenreFilter/GenreFilter';
 import { NoRatedMovies } from 'components/NoRatedMovies/NoRatedMovies';
 import { ScrollUp } from 'components/ScrollUp/ScrollUp';
 import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
+import {
+  NoRatedMoviesWrap,
+  FilterWrap,
+  NoMovieText,
+} from './RatedMoviesPage.styled';
+import { RatedMoviesList } from 'components/RatedMoviesList/RatedMoviesList';
 
+//
 const RatedMoviesPage = () => {
-  const ratedMovies = useSelector(state => state.ratedMovies);
+  const ratedMovies = useSelector(selectRatedMovies);
   const isRatedMovies = ratedMovies.length > 0;
   const [genreFilterValue, setGenreFilterValue] = useState('');
 
@@ -25,51 +34,35 @@ const RatedMoviesPage = () => {
   );
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 10, textAlign: 'center' }}>
-      <GoBackBtn />
-
-      {!isRatedMovies && <NoRatedMovies />}
+    <>
+      {!isRatedMovies && (
+        <NoRatedMoviesWrap>
+          <GoBackBtn />
+          <NoRatedMovies />
+        </NoRatedMoviesWrap>
+      )}
 
       {isRatedMovies && (
         <>
-          <GenreFilter
-            value={genreFilterValue}
-            onChange={handlerFilterChange}
-          />
+          <FilterWrap>
+            <GoBackBtn />
+            <GenreFilter
+              value={genreFilterValue}
+              onChange={handlerFilterChange}
+            />
+          </FilterWrap>
 
           {filtredMovies.length === 0 && (
-            <p>There are no movies in the "{genreFilterValue}" genre</p>
+            <NoMovieText>
+              There are no movies in the "{genreFilterValue}" genre
+            </NoMovieText>
           )}
 
-          <Box
-            component="ul"
-            sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px',
-              justifyContent: 'center',
-              padding: 0,
-            }}
-          >
-            {filtredMovies.map(({ Poster, Title, Year, imdbID, Genre }) => (
-              <ListItem
-                key={imdbID}
-                sx={{ padding: '0', width: '350px', height: '650px' }}
-              >
-                <MovieCard
-                  poster={Poster}
-                  year={Year}
-                  title={Title}
-                  id={imdbID}
-                  genre={Genre}
-                />
-              </ListItem>
-            ))}
-          </Box>
+          <RatedMoviesList filtredMovies={filtredMovies} />
         </>
       )}
       <ScrollUp />
-    </Container>
+    </>
   );
 };
 

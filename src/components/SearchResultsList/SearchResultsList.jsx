@@ -7,12 +7,9 @@ import { Stack } from '@mui/material';
 import { useGetMoviesByTitleQuery } from 'redux/slices/searchMoviesSlice';
 // components
 import { MovieCard } from '../MovieCard/MovieCard';
-import {
-  SearchList,
-  StyledListItem,
-  StyledParination,
-  StyledLoader,
-} from './SearchResultsList.styled';
+import { StyledParination } from './SearchResultsList.styled';
+import { Loader } from '../Common/Loader.styled';
+import { List, StyledListItem } from '../Common/MovieList.styled';
 
 //
 export const SearchResultsList = () => {
@@ -45,7 +42,7 @@ export const SearchResultsList = () => {
 
   return (
     <>
-      {isLoading && <StyledLoader />}
+      {isLoading && <Loader />}
 
       {error && <p>Something goes wrong :( Try again later.</p>}
       {/* Real error {error.data.Error} */}
@@ -53,7 +50,7 @@ export const SearchResultsList = () => {
       {data?.Error && <p>{data.Error}</p>}
 
       {data && !data?.Error && (
-        <SearchList>
+        <List>
           {data.Search?.map(({ Poster, Title, imdbID, Year }) => (
             <StyledListItem key={imdbID}>
               <MovieCard
@@ -64,7 +61,7 @@ export const SearchResultsList = () => {
               />
             </StyledListItem>
           ))}
-        </SearchList>
+        </List>
       )}
 
       {data?.totalResults > 10 && (
