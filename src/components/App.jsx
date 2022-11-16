@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 // components
 import { NavBar } from 'components/NavBar/NavBar';
 // pages
-import SearchPage from 'pages/SearchPage/SearchPage';
+import SearchPage from '../pages/SearchPage/SearchPage';
 const RatedMoviesPage = lazy(() =>
   import('pages/RatedMoviesPage/RatedMoviesPage')
 );
