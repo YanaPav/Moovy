@@ -8,8 +8,8 @@ import { useGetMoviesByTitleQuery } from 'redux/slices/searchMoviesSlice';
 // components
 import { MovieCard } from '../MovieCard/MovieCard';
 import { StyledParination } from './SearchResultsList.styled';
-import { Loader } from '../Common/Loader.styled';
-import { List, StyledListItem } from '../Common/MovieList.styled';
+import { Loader } from '../Loader/Loader.styled';
+import { List, StyledListItem } from '../MovieList/MovieList.styled';
 
 //
 export const SearchResultsList = () => {

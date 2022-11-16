@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { List, StyledListItem } from '../Common/MovieList.styled';
+import { List, StyledListItem } from '../MovieList/MovieList.styled';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 
 //

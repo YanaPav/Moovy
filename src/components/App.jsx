@@ -1,8 +1,6 @@
 // react
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// libraries
-import CssBaseline from '@mui/material/CssBaseline';
 // components
 import { NavBar } from 'components/NavBar/NavBar';
 import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';

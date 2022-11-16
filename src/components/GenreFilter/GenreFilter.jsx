@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledTextField } from '../Common/StyledTextField.styled';
+import { StyledTextField } from '../StyledTextField/StyledTextField.styled';
 
 export const GenreFilter = ({ value, onChange }) => {
   return (

@@ -5,9 +5,9 @@ import { Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 // components
 import { StyledForm } from './SearchForm.styled';
-import { StyledTextField } from '../Common/StyledTextField.styled';
+import { StyledTextField } from '../StyledTextField/StyledTextField.styled';
 
-// 
+//
 export const SearchForm = () => {
   const [, setSearchParams] = useSearchParams();
 

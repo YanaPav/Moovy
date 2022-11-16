@@ -5,7 +5,7 @@ import { useGetMovieByIdQuery } from 'redux/slices/getMovieDetailsSlice';
 // components
 import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
 import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
-import { Loader } from 'components/Common/Loader.styled';
+import { Loader } from 'components/Loader/Loader.styled';
 
 //
 const MovieDetailsPage = () => {
